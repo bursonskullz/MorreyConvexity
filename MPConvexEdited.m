@@ -1,132 +1,134 @@
-% TITLE: Morrey Conjecture
-% DATE: 03-03-2021
-% PURPOSE: OBTAIN Numerical Results concerning Morrey Conjecture
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%% intantiation of variables %%%%%%%%%%%%%%%%%%%%
 
-L = 10
-epsilon = [1,0; 0,sqrt(3)]
-gamma = 2.2
-xmin = 0.0 
-xmax = 1.0 
-ymin = 0.0 
-ymax = 1.0
-
-x = [0.0: 0.1: 1] 
-y = [0.0: 0.1: 1]
-
-Wl = [2,2] % starting function in paper gradient phi(x,y) produce 2x2 matrix
-WL = [0,0; 0,0]    
-
-
-DL = [2,2] % starting function for JGamma
-DL = [0,0; 0,0]   
+Npoints = 10;
+gridSize = 1/Npoints;
+constVec = [1,1];
+wp = zeros(1,2); 
+[x,y] = ndgrid(0:gridSize:1,0:gridSize:1)
+W = [1,1] 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%% Main algorithm %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-! test function needs to be correct and alphaTilda needs to be fixed
+
+
 %1. create constant epslon 2x2    ----
-%2. create test function               --- change when ready
+%2. create function               --- change when ready
 %3. loop through change function 
 %4. copute gradient of J_y anf each step using the double intergale method in matlab
 
 
-for = 1: L    % create L different function for WL and DL 
 
-	alphaTilda = newtonMethod(domain, GFunct, startingPoint)   % fix below for any fuctionn                 
+epsilon = [1,0; 0,sqrt(3)]
 
-	componentW1 = w1(firstW1, firstD1 x, y)       % takes in the old function and position (x,y)
-	componentW2 = w1(firstW2, firstD2, x, y)       % takes in the old function and position (x,y)
-	componentW3 = w1(firstW3, firstD3, x, y)       % takes in the old function and position (x,y)
-	componentW4 = w1(firstW4, firstD4, x, y)       % takes in the old function and position (x,y)
-
+functFGamma = @ x**2.0+ 1.0/y**2     % put our function here we want to test
+DL = @ sin(X)+cos(y)
+Wl = [2,2] % starting function in paper gradient phi(x,y) produce 2x2 matrix
+WL = [0,0; 0,0]    
 
 
-	componentD1 = 
-	componentD2 = 
-	componentD3 = 
-	componentD4 = 
+DL = [2,2] % starting function for JGamma
+DL = [0,0; 0,0]    
+
+for = 1: Npoints
+	domain = 
+	GFunct = 
+	alphaTilda = newtonMethod(domain, GFunct, startingPoint)   % fix below for any fuction 
+	
+	WL[1,1] =  @func1
+	WL[1,2] =  @funt2	
+	WL[2,1] =  @funt3
+	WL[2,2] =  @func4
+
+	WL[1,1] = WL[1,1] + alphaTilda*DL[1,1]
+	WL[1,2] = WL[1,2] + alphaTilda*DL[1,2]
+	WL[2,1] = WL[1,1] + alphaTilda*DL[2,1]
+	WL[2,2] = WL[2,1] + alphaTilda*DL[2,2]
+
+	DL[1,1] =  @func5
+	DL[1,2] =  @funt6	
+	DL[2,1] =  @funt7
+	DL[2,2] =  @func8
+
+	DL[1,1] = DL[1,1] + alphaTilda*DL[1,1]
+	DL[1,2] = DL[1,2] + alphaTilda*DL[1,2]
+	DL[2,1] = DL[1,1] + alphaTilda*DL[2,1]
+	DL[2,2] = DL[2,1] + alphaTilda*DL[2,2]
 
 
-	JGamma =  integral2(testFunction, xmin,ymin, xmax, ymax)  % pass in w1, w2,w3,w4
-	%gradientJGamma = 
 
 % end loop
 
-%%%%%%%%%%%%%%%%%%%%%%%% END ALGO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-%%%%%%%%%%%%%%%%%%functions%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-function result  = w1(@anyname1, @anyname2 x,y)                  % this function is w1 component
-	result =  anyname1(x,y) + alphaTilda *anyname2(x,y)
-
-function result  = w2(@anyname1, @anyname1 x,y)                  % this function is w1 component
-	result =  anyname1(x,y) + alphaTilda *anyname2(x,y)
-
-function result  = w3(@anyname, @anyname1, x,y)                  % this function is w1 component
-	result =  anyname1(x,y) + alphaTilda *anyname2(x,y)
-
-
-function result  = w4(@anyname,  @anyname1, x,y)                  % this function is w1 component
-	result =  anyname1(x,y) + alphaTilda *anyname2(x,y)
-
-function result = firstW1(x,y)   % first component of w1 at L = 0  (this is given )
-		result = x + y
-
-function result = firstW2(x,y)   % first component of w1 at L = 0  (this is given )
-		result = cos(x) + cos(y) 
-
-function result = firstW3(x,y)   % first component of w1 at L = 0  (this is given )
-		result = cos(x) + cos(y) 
-
-function result = firstW4(x,y)   % first component of w1 at L = 0  (this is given )
-		result = cos(x) + cos(y) 
-
-function result = firstD1(x,y)   % first component of w1 at L = 0  (this is given )
-		result = cos(x) + cos(y) 
-
-function result = firstD2(x,y)   % first component of w1 at L = 0  (this is given )
-		result = cos(x) + cos(y) 
-
-function result = firstD3(x,y)   % first component of w1 at L = 0  (this is given )
-		result = cos(x) + cos(y) 
-
-function result = firstD4(x,y)   % first component of w1 at L = 0  (this is given )
-		result = cos(x) + cos(y) 
-
-
-function funcGamma = testFunction(matrix[2,2], testgamma)
-
-	norm1 = matrix[1,1]**2+ matrix[1,2]**2+ matrix[2,1]**2 + matrix[2,2]**2
-	det   = matrix[1,1]*matrix[2,2] -matrix[2,1]*matrix[1,2]
-
-	funcGamma = norm1**4 - testgamma* norm1**2 * det
-end 
-
-
-
-% use matlab graidnet function
 	
-
-
-
-
-% examples
 %{
+for k = 1: Npoints*Npoints
+	    %% myfunct = ?
+		%% alpha = newtonMethod(myfunct)
+		%% W(k+1) = W(k)+ alpha*gradient(W(k)) %% need to be a function taking in an array
+		
 
-function fun = function(x,y)
-	fun = x*2+y*2
+%print(X)
+%print(y)
+
+% accesing the points in the array
 
 
-function doubleFun = function(@fun, x, y)
-	doubleFun = fun(x,y)
+%X(0,0,0)
+%y(0,0,0)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Plots for results %%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% plot F at differnt level curves
+%% plot sum of partial of the function F (to see the total derivtaive)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% End Algo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%Functions  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+function newtonMethod(domain,function, startingPoint)
+	result = 1
+
+function result = calWatPM(m) 
+	result = -1^m*constVec   
+
+function result = norm(vector)
+	n = size(vector)
+	sum = 0.0
+	for i=1:n
+		sum = sum + vector[n]^2
+	result = sqrt(sum)
+
+function result = newtonMethod(array)
+	alpha = 0
+	domain = ?
+	function = ?
+	arrayPrime = derivtaive(domain, function) 
+	result =  alpha - array[alpha]/arrayPrime[alpha] 
+
+function result = derivtaive(domain,range) 
+    h = 0.0001
+    array = []
+    for x = 1: size(domain)-1
+		array[x] = (range[x+1]-array[x])/h // THE range and domain must be meshed with same global variable H
+	result = array
+
+function result = determinant2x2(matrix)
+	result = matrix(1,1)*matrix(2,2) - matrix(1,2)*matrix(2,1)
+
+function result = f(y, matrix)
+	vector = [matrix(1,1),matrix(1,2),matrix(2,1),matrix(2,2)]
+	result = norm(vector)^4-y*norm(vector)^2*determinant2x2(matrix)
+
+%%%% need to add graident and integrale function to compute graident of J_Y
 
 %}
-
