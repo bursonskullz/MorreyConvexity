@@ -1,5 +1,4 @@
 % TITLE: Morrey Conjecture
-% AUTHORS: K. ENAKOUTSA, R. BURSON
 % DATE: 03-03-2021
 % PURPOSE: OBTAIN Numerical Results concerning Morrey Conjecture
 
