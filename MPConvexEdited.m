@@ -1,4 +1,3 @@
-% AUTHORS: K. ENAKOUTSA, R. BURSON
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%% intantiation of variables %%%%%%%%%%%%%%%%%%%%
 
@@ -42,10 +41,10 @@ for = 1: L    % create L different function for WL and DL
 
 
 
-	componentD1 = 
-	componentD2 = 
-	componentD3 = 
-	componentD4 = 
+	%componentD1 = 
+	%componentD2 = 
+	%componentD3 = 
+	%componentD4 = 
 
 
 	JGamma =  integral2(testFunction, xmin,ymin, xmax, ymax)  % pass in w1, w2,w3,w4
@@ -109,11 +108,7 @@ end
 
 
 
-% use matlab graidnet function
-	
-
-
-
+% use matlab graidient function
 
 % examples
 %{
